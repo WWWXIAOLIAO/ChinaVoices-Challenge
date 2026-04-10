@@ -8,14 +8,30 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+:root {
+  --sg-blue: #1f4385;
+  --sg-blue-2: #2f6fed;
+  --sg-ink: #0f172a;
+  --sg-text: #334155;
+  --sg-muted: #64748b;
+  --sg-surface: rgba(255, 255, 255, 0.78);
+  --sg-border: rgba(15, 23, 42, 0.08);
+  --sg-shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --sg-shadow-md: 0 14px 40px rgba(15, 23, 42, 0.12);
+  --sg-radius: 14px;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
-  color: #555555;
+  color: var(--sg-text);
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(47, 111, 237, 0.12), transparent 55%),
+    radial-gradient(900px 600px at 90% 0%, rgba(31, 67, 133, 0.10), transparent 55%),
+    #f6f8fc;
 }
 
 a {
   text-decoration: none;
-  color: #1f4385;
+  color: var(--sg-blue);
 }
 
 a:hover {
@@ -2118,3 +2134,146 @@ blockquote {
 .btn-get-started.btn.rulesBtn:hover {
   color: grey;
   }
+
+/* -------------------------------------------------------------
+   Premium polish + micro interactions (SmartGlasses)
+-------------------------------------------------------------- */
+
+#header.fixed-top {
+  background: var(--sg-surface);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--sg-border);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.10);
+}
+
+.navbar a,
+.navbar a:focus {
+  position: relative;
+}
+
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 30px;
+  bottom: 6px;
+  height: 2px;
+  width: calc(100% - 30px);
+  background: linear-gradient(90deg, var(--sg-blue), rgba(47, 111, 237, 0.2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+
+.navbar a:hover::after,
+.navbar .active::after,
+.navbar li:hover > a::after {
+  transform: scaleX(0.6);
+}
+
+#hero {
+  overflow: hidden;
+}
+
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 500px at 20% 20%, rgba(47, 111, 237, 0.45), transparent 60%),
+    radial-gradient(900px 600px at 80% 30%, rgba(31, 67, 133, 0.40), transparent 62%),
+    linear-gradient(180deg, rgba(2, 6, 23, 0.55), rgba(2, 6, 23, 0.35));
+  pointer-events: none;
+}
+
+#hero::after {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  left: -160px;
+  top: 20%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.35), rgba(47, 111, 237, 0.10), transparent 60%);
+  filter: blur(18px);
+  opacity: 0.7;
+  transform: translate3d(0, 0, 0);
+  animation: sg-float 12s ease-in-out infinite;
+  pointer-events: none;
+}
+
+#hero .btn-get-started {
+  box-shadow: 0 12px 28px rgba(31, 67, 133, 0.35);
+  transition: transform 220ms ease, background 220ms ease, color 220ms ease, box-shadow 220ms ease;
+}
+
+#hero .btn-get-started:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
+}
+
+.section-title h2::after {
+  content: "";
+  display: block;
+  width: 68px;
+  height: 4px;
+  margin: 12px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--sg-blue), rgba(47, 111, 237, 0.2));
+}
+
+.timeline-new .timeline-content-wrapper,
+.track-card,
+.registration-step {
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.track-card:hover,
+.timeline-new .timeline-content-wrapper:hover,
+.registration-step:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sg-shadow-sm);
+}
+
+.scroll-progress {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 3px;
+  width: 100%;
+  z-index: 10000;
+  background: rgba(15, 23, 42, 0.08);
+  pointer-events: none;
+}
+
+.scroll-progress__bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--sg-blue), var(--sg-blue-2));
+  box-shadow: 0 0 18px rgba(47, 111, 237, 0.35);
+  transform-origin: left;
+}
+
+@keyframes sg-float {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(120px, -40px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  #hero::after {
+    animation: none !important;
+  }
+}
