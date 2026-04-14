@@ -170,7 +170,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 0 10px 30px;
+  padding: 10px 16px;
   font-size: 15px;
   color: #151515;
   text-transform: uppercase;
@@ -2155,20 +2155,20 @@ blockquote {
 .navbar a::after {
   content: "";
   position: absolute;
-  left: 30px;
+  left: 50%;
   bottom: 6px;
   height: 2px;
-  width: calc(100% - 30px);
+  width: 44px;
   background: linear-gradient(90deg, var(--sg-blue), rgba(47, 111, 237, 0.2));
-  transform: scaleX(0);
-  transform-origin: left;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
   transition: transform 220ms ease;
 }
 
 .navbar a:hover::after,
 .navbar .active::after,
 .navbar li:hover > a::after {
-  transform: scaleX(0.6);
+  transform: translateX(-50%) scaleX(1);
 }
 
 #hero {

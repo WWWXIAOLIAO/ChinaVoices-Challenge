@@ -76,8 +76,8 @@
           <!--<li><a class="nav-link scrollto" href="./submission.html">Submission</a></li>-->
           <li>
             <a class="nav-link scrollto">
-              <button class="btn-get-started btn rulesBtn" data-bs-toggle="modal" type="button"
-                data-bs-target="#staticBackdrop">Rules</button>
+              <button class="btn-get-started btn rulesBtn" type="button" aria-disabled="true" title="Rules are TBD"
+                style="cursor: not-allowed;">Rules [TBD]</button>
             </a>
           </li>
         </ul>
@@ -157,12 +157,7 @@
 
               <ul class="timeline-list-new" style="list-style: none; padding-left: 0; margin: 0;">
                 <li style="margin: 0.8em 0;">
-                  <strong>2026-04-08:</strong> Registration Opens
-                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfReBQPIFSNJ_pJkpyPJ_icfYxHznTD5y6WtOk5goC-BLPcOQ/viewform"
-                    target="_blank"
-                    style="margin-left: 0.5em; font-weight: bold; font-size: 1.05em; color: #0056b3; text-decoration: underline;">
-                    Registration Link
-                  </a>
+                  <strong>2026-04-15:</strong> Registration Opens
                 </li>
 
               </ul>
@@ -472,11 +467,24 @@
             <div class="content pt-4 pt-lg-0 pl-0 pl-lg-3 px-4">
               <div class="registration-step">
                 <h3>Step 1: Registration</h3>
-                <p>
-                  Teams wishing to participate in the challenge should register via the provided
-                  <strong>
-                    <a href="#" target="_blank">Registration Form</a>
-                  </strong>.
+                <p>Please complete your registration by filling out a registration form.</p>
+                <ul>
+                  <li>
+                    <strong>Preferred:</strong>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfReBQPIFSNJ_pJkpyPJ_icfYxHznTD5y6WtOk5goC-BLPcOQ/viewform"
+                      target="_blank" rel="noopener noreferrer">Google Registration Form</a>
+                  </li>
+                  <li>
+                    <strong>Alternative (Mainland China):</strong>
+                    If you cannot access Google Forms, or if repeated submissions are unsuccessful, please use the 
+                    <a href="https://docs.qq.com/form/page/DVWV6ZGJoSFBnd3Zi" target="_blank"
+                      rel="noopener noreferrer">Tencent Registration Form</a>.
+                  </li>
+                </ul>
+                <p style="margin-bottom: 0;">
+                  <strong> After you submit the registration form, the organizing committee will send a confirmation
+                    email within 1 business day. Please check your inbox in time; if you do not receive it, please check
+                    your spam folder first, or contact us via the email addresses below.</strong>
                 </p>
                 <!-- <ul>
                   <li>Team name</li>
@@ -499,16 +507,25 @@
                   If you have any questions, please contact the organizers:
                 </p>
                 <ul style="margin-left: 20px; margin-bottom: 0;">
-                  <li>
-                    <a href="mailto:zxzhao@mail.nwpu.edu.cn">zxzhao@mail.nwpu.edu.cn</a>
-                  </li>
+
                   <li>
                     <a href="mailto:gdh@mail.nwpu.edu.cn">gdh@mail.nwpu.edu.cn</a>
+                  </li>
+                  <li>
+                    <a href="mailto:zxzhao@mail.nwpu.edu.cn">zxzhao@mail.nwpu.edu.cn</a>
                   </li>
                   <li>
                     <a href="mailto:liaoyujie@mail.nwpu.edu.cn">liaoyujie@mail.nwpu.edu.cn</a>
                   </li>
                 </ul>
+                <div style="margin-top: 14px;">
+                  <div style="font-weight: 600; color: #1f4385; margin-bottom: 8px;">WeChat Group QR Code</div>
+                  <img src="assets/img/wechat.jpg" alt="WeChat group QR code"
+                    style="max-width: 220px; width: 100%; border-radius: 10px; border: 1px solid rgba(15, 23, 42, 0.08); box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);" />
+                  <div style="margin-top: 10px;">
+                    <strong>If the QR code is expired, please email us to request the latest QR code.</strong>
+                  </div>
+                </div>
               </div>
 
               <!-- <div class="registration-step">
@@ -624,19 +641,15 @@
               <p>The tentative timeline for running the challenge is as follows:</p>
               <ul class="timeline-list-new" style="list-style: none; padding-left: 0; margin: 0;">
                 <li style="margin: 0.8em 0;">
-                  <strong>2026-04-08:</strong> Registration Opens
-                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfReBQPIFSNJ_pJkpyPJ_icfYxHznTD5y6WtOk5goC-BLPcOQ/viewform"
-                    target="_blank"
-                    style="margin-left: 0.5em; font-weight: bold; font-size: 1.05em; color: #0056b3; text-decoration: underline;">
-                    Registration Link
-                  </a>
+                  <strong>2026-04-15:</strong> Registration Opens
                 </li>
                 <li style="margin: 0.8em 0;"><strong>2026-05-07:</strong> Release of Training Set, Validation Set</li>
                 <li style="margin: 0.8em 0;"><strong>2026-06-01:</strong> Registration Closes</li>
                 <li style="margin: 0.8em 0;"><strong>2026-06-05:</strong> Release of Test Set</li>
                 <li style="margin: 0.8em 0;"><strong>2026-06-19:</strong> Results Submission Deadline</li>
-                <li style="margin: 0.8em 0;"><strong>2026-07-03:</strong> Challenge Paper Submission Deadline</li>
+                <li style="margin: 0.8em 0;"><strong>2026-07-03:</strong> System Description Submission Deadline</li>
                 <li style="margin: 0.8em 0;"><strong>2026-07-08:</strong> SLT Official Paper Submission Deadline</li>
+                <li style="margin: 0.8em 0;"><strong>2026-09-01:</strong> Paper Notification</li>
               </ul>
             </div>
           </div>
