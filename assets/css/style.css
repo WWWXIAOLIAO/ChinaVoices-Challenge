@@ -583,8 +583,6 @@ section {
 
 .registration ul li {
   padding-bottom: 10px;
-  display: flex;
-  align-items: flex-start;
 }
 
 .registration ul i {
