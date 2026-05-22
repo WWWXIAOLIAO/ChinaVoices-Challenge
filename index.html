@@ -898,14 +898,18 @@
             <h3 class="h5 fw-bold mt-5 mb-4" style="color: #1f4385;">2. Models &amp; Rules</h3>
 
             <div class="faq-item">
-              <p class="fw-bold mb-1">Q: How is the "One System" defined in the rules? Can I use different models to
-                handle their corresponding tasks (e.g., using an if-else script for task routing)?</p>
-              <p>A: The core principle of this challenge is "One system handles two tasks". The single system submitted
-                by your team may include necessary pre-processing and post-processing modules, and we encourage internal
-                architectural innovations as long as they are part of an integrated system design. However, it is
-                strictly prohibited to use manually hard-coded heuristic rules (e.g., simple if-else scripts) to
-                forcibly route test samples with different characteristics to completely independent and heterogeneous
-                core models for "pseudo-ensembling".</p>
+              <p class="fw-bold mb-1">Q: Does the challenge require using the same model/system to simultaneously
+                complete both TSA-ASR and SLU tasks? Or is it allowed to design separate modules (e.g., using an
+                independent ASR+Diarization model to get transcriptions, and then feeding them into an independent SLU
+                model for understanding)?</p>
+              <p>A: The challenge requires the use of the same core model (or unified architecture) to simultaneously
+                complete both the TSA-ASR and SLU tasks. As defined by the "Single System" rule, we do not allow
+                traditional disjoint cascaded approaches (i.e., using a completely independent ASR model to generate
+                text, and then feeding that text into another completely independent text-only LLM for SLU reasoning).
+                However, you are allowed to use front-end auxiliary modules (e.g., Beamforming, Voice Activity Detection
+                (VAD), speech separation) to enhance the audio or extract features. After front-end processing, the core
+                automatic speech recognition (ASR), diarization, and spoken language understanding (SLU) must be handled
+                collectively by the same Audio-Language Model (ALM) or unified main architecture.</p>
             </div>
 
             <div class="faq-item">
