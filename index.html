@@ -583,7 +583,7 @@
 
 
           <!-- Evaluation Metric Section -->
-          
+
         </div>
     </section>
 
@@ -595,12 +595,12 @@
         </div>
 
         <div class="row">
-          <div class="col-lg-12" data-aos="fade-up"
-            style="font-size: 16px; text-align: justify; line-height: 1.65;">
+          <div class="col-lg-12" data-aos="fade-up" style="font-size: 16px; text-align: justify; line-height: 1.65;">
             <p>
               To assist participating teams in accurately evaluating their models' performance locally, the organizing
               committee has initially released the official evaluation guidelines and scoring scripts. In the subsequent
-              phases, we will continuously update the repository with the evaluation performances of more baseline systems
+              phases, we will continuously update the repository with the evaluation performances of more baseline
+              systems
               (including baseline models trained on a combination of open-source datasets and the official SmartGlasses
               scenario data).
             </p>
@@ -613,10 +613,12 @@
               local evaluations on the Dev Set perfectly align with the final Test Set official scoring standards.
             </p>
 
-            <h3 class="h5 fw-bold mt-4 mb-3" style="color: #1f4385;">Task 1: TSA-ASR (Time-Stamped Speaker-Attributed ASR)</h3>
+            <h3 class="h5 fw-bold mt-4 mb-3" style="color: #1f4385;">Task 1: TSA-ASR (Time-Stamped Speaker-Attributed
+              ASR)</h3>
             <ul style="padding-left: 1.25rem;">
               <li class="mb-2">
-                <strong>Primary Ranking Metric:</strong> tcpWER. A strict time tolerance collar of 0.25 seconds is applied
+                <strong>Primary Ranking Metric:</strong> tcpWER. A strict time tolerance collar of 0.25 seconds is
+                applied
                 during the official evaluation.
               </li>
               <li class="mb-2">
@@ -630,14 +632,16 @@
               </li>
             </ul>
 
-            <h3 class="h5 fw-bold mt-4 mb-3" style="color: #1f4385;">Task 2: SLU (Spoken Language Understanding / Audio QA)</h3>
+            <h3 class="h5 fw-bold mt-4 mb-3" style="color: #1f4385;">Task 2: SLU (Spoken Language Understanding / Audio
+              QA)</h3>
             <ul style="padding-left: 1.25rem;">
               <li class="mb-2">
                 <strong>Metric:</strong> Accuracy, defined as the percentage of correctly answered multiple-choice
                 questions.
               </li>
               <li class="mb-2">
-                <strong>Current Status:</strong> For now, teams can evaluate their models locally by calculating the exact
+                <strong>Current Status:</strong> For now, teams can evaluate their models locally by calculating the
+                exact
                 match accuracy against the Dev Set references.
               </li>
             </ul>
@@ -950,7 +954,7 @@
 
             <div class="faq-item">
               <p class="fw-bold mb-1">Q: Do I have to use the exact same model to participate in both Track 1
-                (Two-party) and Track 2 (Multi-party)?</p>
+                and Track 2?</p>
               <p>A: This is not mandatory. You can design one specific model for Track 1 and a different model for Track
                 2. However, we encourage teams with sufficient resources to explore foundational
                 Omni-modal/Audio-Language Models capable of handling both tracks simultaneously.</p>
@@ -1241,7 +1245,7 @@
             </div>
           </div>
 
-         <!-- Yujie Liao -->
+          <!-- Yujie Liao -->
           <div class="col text-center" data-aos="zoom-in" data-aos-delay="600">
             <div style="line-height: 1.4;">
               <h4 style="font-weight: bold; color: #1f4385; font-size: 1.2rem; margin-bottom: 0.2rem;">Yujie Liao</h4>
@@ -1337,7 +1341,8 @@
               <strong>TSA-ASR task constraint:</strong> Participating teams must adopt an end-to-end paradigm based on a
               large language model architecture (e.g., sequential generation via an ALM) to jointly handle transcription
               and speaker attribution. Solutions that rely purely on traditional &quot;fragmented small-model
-              cascades&quot; (e.g., conventional independent VAD + speaker embedding clustering + traditional small-scale
+              cascades&quot; (e.g., conventional independent VAD + speaker embedding clustering + traditional
+              small-scale
               ASR) do not align with this challenge's goal of advancing multimodal large language model frontiers.
             </li>
             <li class="mb-0" style="line-height: 1.65;">
@@ -1345,7 +1350,8 @@
               prohibited (i.e., first using an ASR model to generate plain text transcriptions, then directly feeding
               that plain text into an independent traditional text-based Large Language Model (LLM) for reasoning). The
               cognition and reasoning for the SLU task must be performed by a core Audio-Language Model (ALM) that can
-              directly receive and process audio-modality input, in order to fully leverage the raw acoustic features.
+              directly receive and process audio-modality (or dual-modality) input, ensuring the model fully leverages
+              the raw acoustic features.
             </li>
           </ul>
 
@@ -1385,7 +1391,8 @@
               use a single unified model to handle both tasks simultaneously, that model must also not exceed 35B.
             </li>
             <li class="mb-2" style="line-height: 1.65;">
-              <strong>Official reproducibility verification:</strong> To ensure the authenticity and validity of results,
+              <strong>Official reproducibility verification:</strong> To ensure the authenticity and validity of
+              results,
               the organizing committee will collect model weights and inference scripts from top-performing teams during
               the final phase, and officially reproduce the submitted results on the test set to confirm the final
               rankings.
