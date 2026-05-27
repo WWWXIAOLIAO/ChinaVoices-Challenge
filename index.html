@@ -583,43 +583,85 @@
 
 
           <!-- Evaluation Metric Section -->
-          <div class="row mt-5">
-            <div class="col-12">
-              <div class="section-title" data-aos="fade-up">
-                <h2 style="font-size: 36px; font-weight: bold; color: #1f4385;">Evaluation Metric</h2>
-              </div>
-              <!-- Formula image -->
-              <div class="text-center" data-aos="zoom-in" style="display: none;">
-                <img src="" alt="none"
-                  style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); margin-top: 20px;">
-              </div>
-              <!-- Formula explanation -->
-              <div class="mt-4 pl-4" data-aos="fade-up" style="padding-left: 2rem;">
-                <!-- <p style="font-size: 16px; text-align: justify;">
-                  <strong>Recognition Task (WER/tcpWER)：</strong> This task evaluates the model’s ability to transcribe the speech of target speakers. Word Error Rate (WER) is adopted for Track 1, while Transcription Conditioned Word Error Rate (tcpWER) is used for Track 2 and Track 3. Lower values indicate better performance.
-                </p>
-                <p style="font-size: 16px; text-align: justify;">
-                  <strong>Understanding Task (QA Accuracy)：</strong>This task focuses on multimodal alignment (e.g., audio-visual question answering) and key information extraction from long contexts. Objective evaluation is uniformly conducted using the accuracy of multiple-choice questions constructed based on real contexts. Higher accuracy indicates stronger semantic understanding capability.
-                </p> -->
-                <p>
-                  <strong>TSA-ASR Evaluation:</strong> Tracks 1 and 2 involve multi-speaker scenarios and adopt
-                  Time-Stamped
-                  Speaker-Attributed ASR (TSA-ASR). The evaluation metric is
-                  time-constrained minimum permutation WER (tcpWER).
-                </p>
-
-                <p>
-                  <strong>SLU Evaluation:</strong> All tracks evaluate semantic understanding
-                  using objective Question Answering (QA) accuracy based on multiple-choice
-                  questions constructed from the dialogue context.
-                </p>
-              </div>
-            </div>
-          </div>
+          
         </div>
     </section>
 
+    <!-- ======= Evaluation & Baselines Section ======= -->
+    <section id="evaluation" class="evaluation">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2 style="font-size: 36px; font-weight: bold; color: #1f4385;">Evaluation & Baselines</h2>
+        </div>
 
+        <div class="row">
+          <div class="col-lg-12" data-aos="fade-up"
+            style="font-size: 16px; text-align: justify; line-height: 1.65;">
+            <p>
+              To assist participating teams in accurately evaluating their models' performance locally, the organizing
+              committee has initially released the official evaluation guidelines and scoring scripts. In the subsequent
+              phases, we will continuously update the repository with the evaluation performances of more baseline systems
+              (including baseline models trained on a combination of open-source datasets and the official SmartGlasses
+              scenario data).
+            </p>
+
+            <p>
+              <strong>Official Evaluation & Baseline Repository (GitHub):</strong>
+              <a href="https://github.com/DontPushMeee/Smart-Glass-Challenge" target="_blank" rel="noopener noreferrer">
+                SmartGlasses Challenge - Scoring & Baseline</a>.
+              This toolkit standardizes the evaluation metrics, time tolerance collars, and input formats, ensuring that
+              local evaluations on the Dev Set perfectly align with the final Test Set official scoring standards.
+            </p>
+
+            <h3 class="h5 fw-bold mt-4 mb-3" style="color: #1f4385;">Task 1: TSA-ASR (Time-Stamped Speaker-Attributed ASR)</h3>
+            <ul style="padding-left: 1.25rem;">
+              <li class="mb-2">
+                <strong>Primary Ranking Metric:</strong> tcpWER. A strict time tolerance collar of 0.25 seconds is applied
+                during the official evaluation.
+              </li>
+              <li class="mb-2">
+                <strong>Diagnostic Metrics:</strong> cpWER and DER are additionally reported to help teams pinpoint
+                specific sources of error within their systems.
+              </li>
+              <li class="mb-2">
+                <strong>Rules & Format:</strong> The official ASR evaluation pipeline is built upon the open-source
+                framework MeetEval. Model outputs must strictly adhere to the STM (Segmental Time Mark) format. For
+                detailed scoring rules and Chinese tokenization guidelines, please refer to our GitHub page.
+              </li>
+            </ul>
+
+            <h3 class="h5 fw-bold mt-4 mb-3" style="color: #1f4385;">Task 2: SLU (Spoken Language Understanding / Audio QA)</h3>
+            <ul style="padding-left: 1.25rem;">
+              <li class="mb-2">
+                <strong>Metric:</strong> Accuracy, defined as the percentage of correctly answered multiple-choice
+                questions.
+              </li>
+              <li class="mb-2">
+                <strong>Current Status:</strong> For now, teams can evaluate their models locally by calculating the exact
+                match accuracy against the Dev Set references.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Evaluation & Baselines Section -->
+
+    <style>
+      .evaluation {
+        padding: 60px 0;
+      }
+
+      .evaluation a {
+        color: #1f4385;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .evaluation a:hover {
+        text-decoration: underline;
+      }
+    </style>
 
 
     <!-- ======= Registration Section ======= -->
@@ -899,17 +941,11 @@
 
             <div class="faq-item">
               <p class="fw-bold mb-1">Q: Does the challenge require using the same model/system to simultaneously
-                complete both TSA-ASR and SLU tasks? Or is it allowed to design separate modules (e.g., using an
-                independent ASR+Diarization model to get transcriptions, and then feeding them into an independent SLU
-                model for understanding)?</p>
-              <p>A: The challenge requires the use of the same core model (or unified architecture) to simultaneously
-                complete both the TSA-ASR and SLU tasks. As defined by the "Single System" rule, we do not allow
-                traditional disjoint cascaded approaches (i.e., using a completely independent ASR model to generate
-                text, and then feeding that text into another completely independent text-only LLM for SLU reasoning).
-                However, you are allowed to use front-end auxiliary modules (e.g., Beamforming, Voice Activity Detection
-                (VAD), speech separation) to enhance the audio or extract features. After front-end processing, the core
-                automatic speech recognition (ASR), diarization, and spoken language understanding (SLU) must be handled
-                collectively by the same Audio-Language Model (ALM) or unified main architecture.</p>
+                complete both TSA-ASR and SLU tasks? Is it allowed to design separate modules?</p>
+              <p>A: We allow separate, independent systems for the two tasks. You may decouple them — for example,
+                training a dedicated recognition system specifically for the TSA-ASR task, and training another
+                independent model specifically for the SLU task. Nevertheless, we strongly encourage teams to explore
+                unified architectures capable of handling both tasks simultaneously.</p>
             </div>
 
             <div class="faq-item">
@@ -1285,10 +1321,24 @@
 
           <h2 class="h5 fw-bold" style="color: #1f4385;">1.1 Model Constraints</h2>
           <ul class="mb-4">
+            <li class="mb-2" style="line-height: 1.65;">
+              <strong>Front-end auxiliary processing:</strong> Front-end auxiliary modules (e.g., Beamforming, Voice
+              Activity Detection (VAD), Speech Separation) are permitted to enhance the input audio signal or perform
+              feature extraction.
+            </li>
+            <li class="mb-2" style="line-height: 1.65;">
+              <strong>System architecture:</strong> Participating teams may submit separate systems or models for the
+              TSA-ASR task and the SLU task (e.g., using a dedicated ASR+Diarization model such as VibeVoice-ASR for
+              the TSA-ASR task, and using another independent Audio-Language Model (ALM) specifically for the SLU task).
+              Nevertheless, we strongly encourage teams to explore unified architectures capable of handling both tasks
+              simultaneously.
+            </li>
             <li class="mb-0" style="line-height: 1.65;">
-              <strong>One unified system per track:</strong> Teams must submit a single, unified model pipeline for each
-              track. Submitting an ensemble of completely different sub-models patched together with manually
-              hard-coded scripts (e.g., if-else rules) is strictly prohibited.
+              <strong>SLU task constraint:</strong> The use of traditional text-only cascaded approaches is strictly
+              prohibited (i.e., first using an ASR model to generate plain text transcriptions, then directly feeding
+              that plain text into an independent traditional text-based Large Language Model (LLM) for reasoning). The
+              cognition and reasoning for the SLU task must be performed by a core Audio-Language Model (ALM) that can
+              directly receive and process audio-modality input, in order to fully leverage the raw acoustic features.
             </li>
           </ul>
 
@@ -1317,17 +1367,28 @@
             </li>
           </ul>
 
-          <h2 class="h5 fw-bold" style="color: #1f4385;">1.3 Paper &amp; Reproducibility</h2>
+          <h2 class="h5 fw-bold" style="color: #1f4385;">1.3 Submission &amp; Reproducibility</h2>
           <ul class="mb-0">
             <li class="mb-2" style="line-height: 1.65;">
-              <strong>System Description Paper:</strong> A paper detailing the methodology and data usage is required to
-              be
-              eligible for final rankings, awards, and SLT 2026 presentations.
+              <strong>Model size limit:</strong> To ensure fairness, the total parameter count of the system used for a
+              single task is limited to the 30B level. Considering the actual sizes of commonly available open-source
+              models (e.g., 32B, 34B), the absolute hard cap is relaxed to 35B. Specifically: if you use a cascaded
+              pipeline for the TSA-ASR task, the sum of all learnable-parameter modules in the pipeline must not exceed
+              35B; if you use an ALM for the SLU task, the total parameter count of that ALM must not exceed 35B; if you
+              use a single unified model to handle both tasks simultaneously, that model must also not exceed 35B.
+            </li>
+            <li class="mb-2" style="line-height: 1.65;">
+              <strong>Official reproducibility verification:</strong> To ensure the authenticity and validity of results,
+              the organizing committee will collect model weights and inference scripts from top-performing teams during
+              the final phase, and officially reproduce the submitted results on the test set to confirm the final
+              rankings.
             </li>
             <li class="mb-0" style="line-height: 1.65;">
-              <strong>Code open source &amp; verification:</strong> Winning teams are strongly encouraged to open-source
-              their code and weights. The committee reserves the right to request model files and inference code from
-              top-ranking teams for reproducibility verification.
+              <strong>Inference stability &amp; retry mechanism:</strong> During the official reproduction phase on the
+              test set, if a model encounters inference failures on certain data samples (e.g., program crashes or error
+              interruptions), the organizing committee will perform up to 3 inference attempts (i.e., the initial run
+              plus 2 retries on the failed data). If the model still cannot successfully produce inference results after
+              3 attempts, those data samples will be treated as invalid/prediction failures.
             </li>
           </ul>
         </div>
